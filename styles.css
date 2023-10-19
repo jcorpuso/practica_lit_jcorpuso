@@ -48,4 +48,12 @@ footer {
     margin: 5px;
     border: 1px solid black;
     display: flex;
+    flex-direction: row;
+}
+
+.poke-component {
+    width: 100%;
+    margin: 3px;
+    padding: 3px;
+    border: 1px solid black;
 }

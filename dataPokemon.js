@@ -1,4 +1,4 @@
-export default {
+export const pokemons = [{
   "pokemon": [{
     "num": "001",
     "name": "bulbasaur",
@@ -23950,4 +23950,5 @@ export default {
       "candy": "celebi candy"
     }
   }]
-};
+}];
+

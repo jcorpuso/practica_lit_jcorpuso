@@ -1,0 +1,51 @@
+body {
+    background-color: lightblue;
+    font-size: 10px;;
+}
+nav {
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: #ff0000;
+}
+
+main{
+    display: flex;
+    height: 500px;
+    margin: 10px auto;
+    padding: 2px;
+    border: 1px solid black;
+}
+
+footer {
+    background-color: lightgoldenrodyellow;
+}
+
+.font-pokemon {
+    font-family: 'Pokemon Solid';
+}
+
+.nav-container {
+    width: 100%;
+    padding: 3px;
+    display: flex;
+    border: 1px solid black;
+    flex-direction: row;
+    justify-content: center ;
+}
+
+.nav-items {
+    display: flex;
+    width: 60%;
+    height: 30px;
+    border: 1px solid black;
+    align-items: center;
+    /* align-content: center; */
+}
+
+.poke-container {
+    width: 100%;
+    margin: 5px;
+    border: 1px solid black;
+    display: flex;
+}

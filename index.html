@@ -1,28 +1,27 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./images/pokebola.png" type="image/x-icon">
     <script  src="./components/poke-component.js" type="module"></script>
-
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <title>jcorpuso</title>
 </head>
 <body>
     <nav>
-        <div class="nav-container">
-            <div class="nav-items">
+        <div class="navContainer">
+            <div class="navItems">
                 <input type="text" name="search" placeholder="Búsqueda">
                 <button>🔍</button>
-                <h2 class="font-pokemon">Pokemón</h2>
+                <h2 class="fontPokemon">Pokemón</h2>
             </div>
         </div>
     </nav>
     <main>
 
-        <div class="poke-container">
-            <poke-component></poke-component>
+        <div class="pokeContainer">
+            <poke-component ${pokemon.name}></poke-component>
         </div>
     </main>
 </body>

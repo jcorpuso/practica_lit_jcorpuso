@@ -11,7 +11,7 @@ nav {
 
 main{
     display: flex;
-    height: 500px;
+    /* height: 500px; */
     margin: 10px auto;
     padding: 2px;
     border: 1px solid black;
@@ -21,11 +21,11 @@ footer {
     background-color: lightgoldenrodyellow;
 }
 
-.font-pokemon {
+.fontPokemon {
     font-family: 'Pokemon Solid';
 }
 
-.nav-container {
+.navContainer {
     width: 100%;
     padding: 3px;
     display: flex;
@@ -34,7 +34,7 @@ footer {
     justify-content: center ;
 }
 
-.nav-items {
+.navItems {
     display: flex;
     width: 60%;
     height: 30px;
@@ -43,7 +43,7 @@ footer {
     /* align-content: center; */
 }
 
-.poke-container {
+.pokeContainer {
     width: 100%;
     margin: 5px;
     border: 1px solid black;
@@ -52,8 +52,11 @@ footer {
 }
 
 .poke-component {
-    width: 100%;
+    width: 30%;
+    height: 200px;
     margin: 3px;
     padding: 3px;
     border: 1px solid black;
 }
+
+

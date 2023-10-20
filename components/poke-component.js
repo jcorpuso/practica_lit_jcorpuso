@@ -6,9 +6,22 @@ export class PokeComponent extends LitElement {
         css`
             :host {
                 display: block;
+                width: 100%;
+                margin: 5px;
+                padding: 3px;
+                border: 1px solid black;
+            }
+
+            .prueba {
+                width: 100%;
+
             }
         `
     ];
+
+    // static properties = {
+    //     pokemon: {type: Object}
+    // };
 
     constructor() {
         super();
@@ -17,25 +30,22 @@ export class PokeComponent extends LitElement {
 
     render() {
         return html`
-        <div>
+        <p>Este es el poke-component. Aquí debería de pintar</p>${console.log(this.pokemons)}
 
+        
         ${this.pokemons.map( pokemon => html`
-
-          <a>
-
-            <div>
-
-              <img src="${pokemon.img}" alt="${pokemon.name}">
-
-              <h3>#HolaRaza${pokemon.num} ${pokemon.name}</h3>
-
-            </div>
-
-          </a>
-
-        `)}
-
-      </div>
+        <a>
+        <div class="prueba">
+            ${pokemon.pokemon.map(poke => html`
+                <div>
+                    ${poke.name}
+                </div>
+            `
+            )}
+        </div>
+        </a>
+      `)}
+        
         `;
     }
 }

@@ -35,12 +35,23 @@ export class PokeComponent extends LitElement {
                 width:100px;
                 height: 100px;
             }
+
+            .filters {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                width: 100%;
+                height: 100px;
+            }
+            button {
+                width: 175px;
+                height: 25px;
+                margin: 5px;
+            }
+            
         `
     ];
 
-    // static properties = {
-    //     pokemon: {type: Object}
-    // };
 
     constructor() {
         super();
@@ -52,6 +63,11 @@ export class PokeComponent extends LitElement {
        
         ${console.log(this.pokemons)}
         <div class="pokeCont">
+            <div class="filters">
+                <button @click=${this.alfaList}>Ordenar A - Z</button>
+            </div>
+            <div class="">
+            </div>
             ${this.pokemons.map( poke => html`
                 <div class="pokeCard">
                     <img src="${poke.img}" alt="${poke.name}">
@@ -60,7 +76,35 @@ export class PokeComponent extends LitElement {
             `)}
         </div>
 
+
         `;
+    }
+
+    handleEvent(e) {
+        if (e.type === 'click') {
+            this.alfaList(e);
+        }
+    }
+
+    alfaList(e) {
+        const alfalist = pokemons.sort((v1, v2) => {
+            return v1.name.localeCompare(v2.name);
+        }).map( poke => html`
+        <div class="pokeCard">
+            <img src="${poke.img}" alt="${poke.name}">
+            <h3>#${poke.num} ${poke.name}</h3>
+        </div>
+        `);
+        this.requestUpdate();
+        console.log(alfalist)
+
+
+
+    };
+
+    limpiar() {
+        let alfa = pokemons.filter( poke => poke.generation.name === "johto")
+        console.log(alfalist)
     }
 }
 customElements.define('poke-component', PokeComponent);

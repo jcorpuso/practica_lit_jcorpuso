@@ -1,5 +1,4 @@
 export const pokemons = [{
-  "pokemon": [{
     "num": "001",
     "name": "bulbasaur",
     "generation": {
@@ -23949,6 +23948,5 @@ export const pokemons = [{
     "evolution": {
       "candy": "celebi candy"
     }
-  }]
 }];
 

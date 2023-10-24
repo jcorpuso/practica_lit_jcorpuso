@@ -53,6 +53,7 @@ export class PokeComponent extends LitElement {
     ];
 
     static properties = {
+        pokemons: {type: Array},
         seleccion: {type: String}
     };
 
@@ -62,9 +63,27 @@ export class PokeComponent extends LitElement {
         this.seleccion = '';
     }
 
-    render() {
+    connectedCallback() {
+        super.connectedCallback();
+    };
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+    };
+
+    firstUpdated() {
+        super.firstUpdated();
+    }
+
+    updated(changedProperties) {
+        if(changedProperties.has('pokemons')) {
+            this.RaritySelected();
+        }
+    }
+    
+
+    Print() {
         return html`
-        ${console.log(this.pokemons)}
         <div class="pokeCont">
             <div class="filters">
                 <button class="filter" @click="${this.InicioList}">Inicio</button>
@@ -92,31 +111,52 @@ export class PokeComponent extends LitElement {
 
     handleChange(e) {
         this.seleccion = e.target.value;
+        this.RaritySelected(e);
 
+        
+    }
+
+    RaritySelected() {
         switch(this.seleccion){
             case "opcion1":
                 let normal = pokemons.filter( poke => {
                     return poke['pokemon-rarity'] === "normal";
-                });
+                }).map( poke => html`
+                <div class="pokeCard">
+                    <img src="${poke.img}" alt="${poke.name}">
+                    <h3>#${poke.num} ${poke.name}</h3>
+                </div>
+                `);
                 console.log(normal);
+                this.requestUpdate();
                 break;
             case "opcion2":
                 let mitico = pokemons.filter( poke => {
                     return poke['pokemon-rarity'] === "mythic";
-                });
+                }).map( poke => html`
+                <div class="pokeCard">
+                    <img src="${poke.img}" alt="${poke.name}">
+                    <h3>#${poke.num} ${poke.name}</h3>
+                </div>
+                `);
                 console.log(mitico);
+                this.requestUpdate();
                 break;
             case "opcion3":
                 let legendario = pokemons.filter( poke => {
                     return poke['pokemon-rarity'] === "legendary";
-                });
+                }).map( poke => html`
+                <div class="pokeCard">
+                    <img src="${poke.img}" alt="${poke.name}">
+                    <h3>#${poke.num} ${poke.name}</h3>
+                </div>
+                `);
                 console.log(legendario);
+                this.requestUpdate();
                 break;
             default:
                 break;
-        }
-        this.requestUpdate();
-            
+        }            
     }
 
     handleEventAlfaList(e) {
@@ -135,7 +175,7 @@ export class PokeComponent extends LitElement {
         </div>
         `);
         this.requestUpdate();
-        console.log(alfalist)
+        console.log(alfalist);
 
 
 
@@ -156,6 +196,7 @@ export class PokeComponent extends LitElement {
         </div>
         `);
         this.requestUpdate();
+        console.log(reverseList);
     };
 
     handleEventInicioList(e) {
@@ -174,12 +215,15 @@ export class PokeComponent extends LitElement {
         </div>
         `);
         this.requestUpdate();
+        console.log(listaInicial);
     };
 
-    RaritySelected() {
 
+    render() {
+        return html`
+        ${this.Print()}
+        `;
     }
-
 
 }
 customElements.define('poke-component', PokeComponent);

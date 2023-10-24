@@ -3,7 +3,8 @@ body {
     font-size: 10px;;
 }
 nav {
-    margin: 0 auto;
+    display: flex;
+    margin: 5px;
     padding: 10px;
     border: 1px solid black;
     background-color: #ff0000;
@@ -36,6 +37,7 @@ footer {
 
 .navItems {
     display: flex;
+    justify-content: space-between;
     width: 60%;
     height: 30px;
     border: 1px solid black;
@@ -49,7 +51,6 @@ footer {
     margin: 5px;
     border: 1px solid black;
     display: flex;
-    flex-direction: row;
 }
 
 

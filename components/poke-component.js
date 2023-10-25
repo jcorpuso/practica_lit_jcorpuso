@@ -69,8 +69,11 @@ export class PokeComponent extends LitElement {
         
     }
 
-   
-    
+    updated(changedProperties) {
+        if(changedProperties.has(this.filteredResults)) {
+            this.requestUpdate();
+        }
+    };
 
     Print() {
         return html`
@@ -88,186 +91,189 @@ export class PokeComponent extends LitElement {
     }
 
     RaritySelected() {
-        if(this.selectedOption === "opcion1") {
-            const normal = pokemons.filter( poke => {
-                return poke['pokemon-rarity'] === "normal"
-            });
-            this.filteredResults = normal;
-            console.log(normal);
-            this.requestUpdate();
-
-        } else if(this.selectedOption === "opcion2") {
-            const mitico = pokemons.filter( poke => {
-                return poke['pokemon-rarity'] === "mythic"
-            });
-            this.filteredResults = mitico;
-            console.log(mitico)
-            this.requestUpdate();
-        } else if(this.selectedOption === "opcion3") {
-            const legendario = pokemons.filter( poke => {
-                return poke['pokemon-rarity'] === "legendary"
-            });
-            this.filteredResults = legendario;
-            console.log(legendario);
-            this.requestUpdate();
-
-        } else {
-            this.filteredResults = pokemons;
-        }
-        this.requestUpdate();
-    }
-
-    TypeSelected() {
-        switch(this.selectedType) {
-            case "normal":
-                const normalType = pokemons.filter( poke => {
-                    return poke.type == "normal" 
-                });
-                this.filteredResults = normalType;
-                console.log(normalType);
-                this.update();
+        switch(this.selectedOption) {
+            case "all":
+                this.filteredResults = pokemons;
+                console.log(this.filteredResults);
+                this.requestUpdate();
                 break;
-            case "fire":
-                const fire = pokemons.filter( poke => {
-                    return poke.type == "fire"
-                });
-                this.filteredResults = fire;
-                console.log(fire);
-                this.update();
+            case "opcion1":
+                const normal = pokemons.filter( poke => {
+                    return poke['pokemon-rarity'] === "normal"});
+                    this.filteredResults = normal;
+                    console.log(normal);
+                    this.requestUpdate();
                 break;
-            case "water":
-                const water = pokemons.filter( poke => {
-                    return poke.type == "water"
-                });
-                this.filteredResults = water;
-                console.log(water);
-                this.update();
+            case "opcion2":
+                const mitico = pokemons.filter( poke => {
+                    return poke['pokemon-rarity'] === "mythic"});
+                    this.filteredResults = mitico;
+                    console.log(mitico);
+                    this.requestUpdate();
                 break;
-            case "electric":
-                const electric = pokemons.filter( poke => {
-                    return poke.type == "electric"
-                });
-                this.filteredResults = electric;
-                console.log(electric);
-                this.update();
-                break;
-            case "grass":
-                const grass = pokemons.filter( poke => {
-                    return poke.type == "grass"
-                });
-                this.filteredResults = grass;
-                console.log(grass);
-                this.update();
-                break;
-            case "ice":
-                const ice = pokemons.filter( poke => {
-                    return poke.type == "ice"
-                });
-                this.filteredResults = ice;
-                console.log(ice);
-                this.update();
-                break;
-            case "fire":
-                const fighting = pokemons.filter( poke => {
-                    return poke.type == "fighting"
-                });
-                this.filteredResults = fighting;
-                console.log(fighting);
-                this.update();
-                break;
-            case "poison":
-                const poison = pokemons.filter( poke => {
-                    return poke.type == "poison"
-                });
-                this.filteredResults = poison;
-                console.log(poison);
-                this.update();
-                break;
-            case "ground":
-                const ground = pokemons.filter( poke => {
-                    return poke.type == "ground"
-                });
-                this.filteredResults = ground;
-                console.log(ground);
-                this.update();
-                break;
-            case "flying":
-                const flying = pokemons.filter( poke => {
-                    return poke.type == "flying"
-                });
-                this.filteredResults = flying;
-                console.log(flying);
-                this.update();
-                break;
-            case "psychic":
-                const psychic = pokemons.filter( poke => {
-                    return poke.type == "psychic"
-                });
-                this.filteredResults = psychic;
-                console.log(psychic);
-                this.update();
-                break;
-            case "bug":
-                const bug = pokemons.filter( poke => {
-                    return poke.type == "bug"
-                });
-                this.filteredResults = bug;
-                console.log(bug);
-                this.update();
-                break;
-            case "rock":
-                const rock = pokemons.filter( poke => {
-                    return poke.type == "rock"
-                });
-                this.filteredResults = rock;
-                console.log(rock);
-                this.update();
-                break;
-            case "ghost":
-                const ghost = pokemons.filter( poke => {
-                    return poke.type == "ghost"
-                });
-                this.filteredResults = ghost;
-                console.log(ghost);
-                this.update();
-                break;
-            case "dragon":
-                const dragon = pokemons.filter( poke => {
-                    return poke.type == "dragon"
-                });
-                this.filteredResults = dragon;
-                console.log(dragon);
-                this.update();
-                break;
-            case "dark":
-                const dark = pokemons.filter( poke => {
-                    return poke.type == "dark"
-                });
-                this.filteredResults = dark;
-                console.log(dark);
-                this.update();
-                break;
-            case "steel":
-                const steel = pokemons.filter( poke => {
-                    return poke.type == "steel"
-                });
-                this.filteredResults = steel;
-                console.log(steel);
-                this.update();
-                break;
-            case "fairy":
-                const fairy = pokemons.filter( poke => {
-                    return poke.type == "fairy"
-                });
-                this.filteredResults = fairy;
-                console.log(fairy);
-                this.update();
+            case "opcion3":
+                const legendario = pokemons.filter( poke => {
+                    return poke['pokemon-rarity'] === "legendary"});
+                    this.filteredResults = legendario;
+                    console.log(legendario);
+                    this.requestUpdate();
                 break;
             default:
-                this.filteredResults = pokemons;
                 break;
         }
     }
+
+    // TypeSelected() {
+    //     switch(this.selectedType) {
+    //         case "normal":
+    //             const normalType = pokemons.filter( poke => {
+    //                 return poke.type == "normal" 
+    //             });
+    //             this.filteredResults = normalType;
+    //             console.log(normalType);
+    //             this.update();
+    //             break;
+    //         case "fire":
+    //             const fire = pokemons.filter( poke => {
+    //                 return poke.type == "fire"
+    //             });
+    //             this.filteredResults = fire;
+    //             console.log(fire);
+    //             this.update();
+    //             break;
+    //         case "water":
+    //             const water = pokemons.filter( poke => {
+    //                 return poke.type == "water"
+    //             });
+    //             this.filteredResults = water;
+    //             console.log(water);
+    //             this.update();
+    //             break;
+    //         case "electric":
+    //             const electric = pokemons.filter( poke => {
+    //                 return poke.type == "electric"
+    //             });
+    //             this.filteredResults = electric;
+    //             console.log(electric);
+    //             this.update();
+    //             break;
+    //         case "grass":
+    //             const grass = pokemons.filter( poke => {
+    //                 return poke.type == "grass"
+    //             });
+    //             this.filteredResults = grass;
+    //             console.log(grass);
+    //             this.update();
+    //             break;
+    //         case "ice":
+    //             const ice = pokemons.filter( poke => {
+    //                 return poke.type == "ice"
+    //             });
+    //             this.filteredResults = ice;
+    //             console.log(ice);
+    //             this.update();
+    //             break;
+    //         case "fire":
+    //             const fighting = pokemons.filter( poke => {
+    //                 return poke.type == "fighting"
+    //             });
+    //             this.filteredResults = fighting;
+    //             console.log(fighting);
+    //             this.update();
+    //             break;
+    //         case "poison":
+    //             const poison = pokemons.filter( poke => {
+    //                 return poke.type == "poison"
+    //             });
+    //             this.filteredResults = poison;
+    //             console.log(poison);
+    //             this.update();
+    //             break;
+    //         case "ground":
+    //             const ground = pokemons.filter( poke => {
+    //                 return poke.type == "ground"
+    //             });
+    //             this.filteredResults = ground;
+    //             console.log(ground);
+    //             this.update();
+    //             break;
+    //         case "flying":
+    //             const flying = pokemons.filter( poke => {
+    //                 return poke.type == "flying"
+    //             });
+    //             this.filteredResults = flying;
+    //             console.log(flying);
+    //             this.update();
+    //             break;
+    //         case "psychic":
+    //             const psychic = pokemons.filter( poke => {
+    //                 return poke.type == "psychic"
+    //             });
+    //             this.filteredResults = psychic;
+    //             console.log(psychic);
+    //             this.update();
+    //             break;
+    //         case "bug":
+    //             const bug = pokemons.filter( poke => {
+    //                 return poke.type == "bug"
+    //             });
+    //             this.filteredResults = bug;
+    //             console.log(bug);
+    //             this.update();
+    //             break;
+    //         case "rock":
+    //             const rock = pokemons.filter( poke => {
+    //                 return poke.type == "rock"
+    //             });
+    //             this.filteredResults = rock;
+    //             console.log(rock);
+    //             this.update();
+    //             break;
+    //         case "ghost":
+    //             const ghost = pokemons.filter( poke => {
+    //                 return poke.type == "ghost"
+    //             });
+    //             this.filteredResults = ghost;
+    //             console.log(ghost);
+    //             this.update();
+    //             break;
+    //         case "dragon":
+    //             const dragon = pokemons.filter( poke => {
+    //                 return poke.type == "dragon"
+    //             });
+    //             this.filteredResults = dragon;
+    //             console.log(dragon);
+    //             this.update();
+    //             break;
+    //         case "dark":
+    //             const dark = pokemons.filter( poke => {
+    //                 return poke.type == "dark"
+    //             });
+    //             this.filteredResults = dark;
+    //             console.log(dark);
+    //             this.update();
+    //             break;
+    //         case "steel":
+    //             const steel = pokemons.filter( poke => {
+    //                 return poke.type == "steel"
+    //             });
+    //             this.filteredResults = steel;
+    //             console.log(steel);
+    //             this.update();
+    //             break;
+    //         case "fairy":
+    //             const fairy = pokemons.filter( poke => {
+    //                 return poke.type == "fairy"
+    //             });
+    //             this.filteredResults = fairy;
+    //             console.log(fairy);
+    //             this.update();
+    //             break;
+    //         default:
+    //             this.filteredResults = pokemons;
+    //             break;
+    //     }
+    // }
 
     handleEventAlfaList(e) {
         if (e.type === 'click') {
